@@ -1,0 +1,8 @@
+# Ignore node_modules for client and server
+client/node_modules/
+server/node_modules/
+
+# Optional: Ignore logs, environment files, and other common files you might not want to track
+*.log
+.env
+.DS_Store
