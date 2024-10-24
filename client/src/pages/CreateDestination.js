@@ -18,24 +18,37 @@ const CreateDestination = () => {
     }
     
     const createDestination = async (event) => {
-        
-        event.preventDefault();
-
-
         const addDestination = async () => {
-
- 
-        
+          const options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(destination)
+          }
+      
+          const response = await fetch('/destination/create', options)
+          const data = await response.json()
+          setDestination(data)
+          return data.id
         }
-
+      
         const createTripDestination = async (destination_id) => {
-
-
-        
+          const options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({trip_id: trip_id, destination_id: destination_id})
+          }
+      
+          const response = await fetch('/trips-destinations/create', options)
+          const data = await response.json()
+          return data
         }
-
-
-    }
+      
+        addDestination().then(res => createTripDestination(res)).then(res => window.location = '/')
+      }
 
     return (
         <div>

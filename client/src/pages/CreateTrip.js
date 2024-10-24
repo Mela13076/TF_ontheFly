@@ -15,9 +15,19 @@ const CreateTrip = () => {
         })
     }
     
-    const createPost = (event) => {
+    const createTrip = async (event) => {
         event.preventDefault();
 
+        const options ={
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(post)
+        }
+
+        await fetch("/trips", options)
+        window.location.href = "/"
 
         
     }
@@ -56,7 +66,7 @@ const CreateTrip = () => {
                 <input type="text" id="total_cost" name="total_cost" value={post.total_cost} onChange={handleChange}/><br />
                 <br/>
 
-                <input type="submit" value="Submit" onClick={createPost} />
+                <input type="submit" value="Submit" onClick={createTrip} />
             </form>
         </div>
     )

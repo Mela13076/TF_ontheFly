@@ -19,7 +19,21 @@ const App = () => {
   const [destinations, setDestinations] = useState([]);
 
   useEffect(() => {
+    const fetchTrips = async () => {
+      //const response = await fetch("http://localhost:3001/trips")
+      const response = await fetch("/trips")
+      const data = await response.json()
+      setTrips(data) 
+    }
 
+    const fetchDestinations = async () => {
+      const response = await fetch('/destinations')
+      const data = await response.json()
+      setDestinations(data)
+    }
+
+    fetchTrips()
+    fetchDestinations()
 
   }, []);
 
