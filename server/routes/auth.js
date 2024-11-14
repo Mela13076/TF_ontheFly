@@ -36,8 +36,8 @@ router.get(
 router.get(
   '/github/callback',
   passport.authenticate('github', {
-    successRedirect: '/',
-    failureRedirect: '/destinations'
+    successRedirect: 'https://mel-onthefly-deploy-production.up.railway.app/',
+    failureRedirect: 'https://mel-onthefly-deploy-production.up.railway.app/destinations'
   })
 )
 
